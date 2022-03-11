@@ -4,23 +4,23 @@ import Image from 'next/image';
 import {
   Grid,
   Link,
-  List,
-  ListItem,
+  // List,
+  // ListItem,
   Typography,
-  Card,
-  Button,
+  // Card,
+  // Button,
   TextField,
-  CircularProgress,
+  // CircularProgress,
   Box,
 } from '@material-ui/core';
-import Rating from '@material-ui/lab/Rating';
+// import Rating from '@material-ui/lab/Rating';
 import Layout from '../../components/Layout';
 import useStyles from '../../utils/styles';
 //import Product from '../../models/Product';
 import db from '../../utils/db';
-import axios from 'axios';
+// import axios from 'axios';
 import { Store } from '../../utils/Store';
-import { getError } from '../../utils/error';
+// import { getError } from '../../utils/error';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
 import Candidate from '../../models/Candidate';
@@ -28,17 +28,17 @@ import moment from 'moment';
 
 
 export default function CandidateScreen(props) {
-  const router = useRouter();
-  const { state, dispatch } = useContext(Store);
-  const { userInfo } = state;
+  // const router = useRouter();
+  // const { state, dispatch } = useContext(Store);
+  // const { userInfo } = state;
   const { candidate } = props;
   const classes = useStyles();
-  const { enqueueSnackbar } = useSnackbar();
+  // const { enqueueSnackbar } = useSnackbar();
 
-  const [reviews, setReviews] = useState([]);
-  const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [reviews, setReviews] = useState([]);
+  // const [rating, setRating] = useState(0);
+  // const [comment, setComment] = useState('');
+  // const [loading, setLoading] = useState(false);
 
   // const submitHandler = async (e) => {
   //   e.preventDefault();
