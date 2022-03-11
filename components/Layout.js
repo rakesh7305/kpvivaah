@@ -11,7 +11,7 @@ import {
   ThemeProvider,
   CssBaseline,
   Switch,
-  Badge,
+  // Badge,
   Button,
   Menu,
   MenuItem,
@@ -22,13 +22,13 @@ import {
   ListItem,
   Divider,
   ListItemText,
-  InputBase,
-  FormControl,
-  InputLabel,
-  Select,
-  ListSubheader,
+  // InputBase,
+  // FormControl,
+  // InputLabel,
+  // Select,
+  // ListSubheader,
   TextField,
-  Icon,
+  // Icon,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import CancelIcon from '@material-ui/icons/Cancel';
@@ -46,7 +46,8 @@ import { useEffect } from 'react';
 export default function Layout({ title, description, children }) {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
-  const { darkMode, cart, userInfo } = state;
+  //const { darkMode, cart, userInfo } = state;
+  const { darkMode, userInfo } = state;
   const theme = createMuiTheme({
     typography: {
       h1: {
@@ -72,13 +73,13 @@ export default function Layout({ title, description, children }) {
   });
   const classes = useStyles();
 
-  const [sidbarVisible, setSidebarVisible] = useState(false);
-  const sidebarOpenHandler = () => {
-    setSidebarVisible(true);
-  };
-  const sidebarCloseHandler = () => {
-    setSidebarVisible(false);
-  };
+  // const [sidbarVisible, setSidebarVisible] = useState(false);
+  // const sidebarOpenHandler = () => {
+  //   setSidebarVisible(true);
+  // };
+  // const sidebarCloseHandler = () => {
+  //   setSidebarVisible(false);
+  // };
 
   const [categories, setCategories] = useState([]);
   const { enqueueSnackbar } = useSnackbar();
@@ -92,10 +93,10 @@ export default function Layout({ title, description, children }) {
     }
   };
 
-  const [query, setQuery] = useState('');
-  const queryChangeHandler = (e) => {
-    setQuery(e.target.value);
-  };
+  // const [query, setQuery] = useState('');
+  // const queryChangeHandler = (e) => {
+  //   setQuery(e.target.value);
+  // };
   const [genderQuery, setGenderQuery] = useState('');
   const genderQueryChangeHandler = (e) => {
     setGenderQuery(e.target.value);

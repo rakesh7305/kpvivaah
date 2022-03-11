@@ -1,15 +1,15 @@
 import {
-  Button,
+  // Button,
   Card,
   CardActionArea,
-  CardActions,
+  // CardActions,
   CardContent,
   CardMedia,
   Typography,
 } from '@material-ui/core';
 import React from 'react';
 import NextLink from 'next/link';
-import Rating from '@material-ui/lab/Rating';
+// import Rating from '@material-ui/lab/Rating';
 import useStyles from '../utils/styles';
 
 //export default function CandidateItem({ candidate, addToCartHandler }) {

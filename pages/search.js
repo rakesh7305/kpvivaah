@@ -19,29 +19,29 @@ import useStyles from '../utils/styles';
 //import ProductItem from '../components/ProductItem';
 import CandidateItem from '../components/CandidateItem';
 import { Store } from '../utils/Store';
-import axios from 'axios';
-import Rating from '@material-ui/lab/Rating';
+// import axios from 'axios';
+// import Rating from '@material-ui/lab/Rating';
 import { Pagination } from '@material-ui/lab';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import moment from 'moment';
 
 
 const PAGE_SIZE = 3;
 
-const prices = [
-  {
-    name: '$1 to $50',
-    value: '1-50',
-  },
-  {
-    name: '$51 to $200',
-    value: '51-200',
-  },
-  {
-    name: '$201 to $1000',
-    value: '201-1000',
-  },
-];
+// const prices = [
+//   {
+//     name: '$1 to $50',
+//     value: '1-50',
+//   },
+//   {
+//     name: '$51 to $200',
+//     value: '51-200',
+//   },
+//   {
+//     name: '$201 to $1000',
+//     value: '201-1000',
+//   },
+// ];
 const genders = [
   {
     value: 'M',
@@ -87,7 +87,7 @@ const ageGroup = [
   },
 ];
 
-const ratings = [1, 2, 3, 4, 5];
+// const ratings = [1, 2, 3, 4, 5];
 
 export default function Search(props) {
   const classes = useStyles();
@@ -106,7 +106,7 @@ export default function Search(props) {
     sort = 'featured',
   } = router.query;
   const { candidates, countCandidates, page, pages, nriFlags, educationList, addressList, heightList } = props;
-  console.log("In Search 1");
+  console.log("In Search 1 = " + page);
 
   console.log(router.query);
 
@@ -136,7 +136,7 @@ export default function Search(props) {
     if (age) query.age = age;
     if (nriFlag === true) { query.nriFlag = true }
     else if (nriFlag === false) { query.nriFlag = false }
-    else if (nriFlag === 'all') { query.nriFlag = 'all' };
+    else if (nriFlag === 'all') { query.nriFlag = 'all' }
     if (education) query.education = education;
     if (address) query.address = address;
     if (height) query.height = height;
@@ -181,14 +181,14 @@ export default function Search(props) {
   const sortHandler = (e) => {
     filterSearch({ sort: e.target.value });
   };
-  const priceHandler = (e) => {
-    filterSearch({ price: e.target.value });
-  };
-  const ratingHandler = (e) => {
-    filterSearch({ rating: e.target.value });
-  };
+  // const priceHandler = (e) => {
+  //   filterSearch({ price: e.target.value });
+  // };
+  // const ratingHandler = (e) => {
+  //   filterSearch({ rating: e.target.value });
+  // };
 
-  const { state, dispatch } = useContext(Store);
+  //const { state, dispatch } = useContext(Store);
   // const addToCartHandler = async (product) => {
   //   const existItem = state.cart.cartItems.find((x) => x._id === product._id);
   //   const quantity = existItem ? existItem.quantity + 1 : 1;
