@@ -1,7 +1,7 @@
-# Next Amazona
+# KP Vivaah
 Build ECommerce Website Like Amazon by Next.js
- - Source Code    :  https://github.com/basir/next-amazona
- - Demo Website :  https://nextjs-amazona-final.vercel.app
+ - Source Code    :  https://github.com/rakesh7305/kpvivaah
+ - Demo Website :  https://kpvivaah-final.vercel.app
 
 ## What you will learn
  - NextJS basics like setting up project, navigating between pages and data fetching
