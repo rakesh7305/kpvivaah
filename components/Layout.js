@@ -102,10 +102,10 @@ export default function Layout({ title, description, children }) {
   //   setGenderQuery(e.target.value);
   // };
 
-  const [ageQuery, setAgeQuery] = useState('');
-  const ageQueryChangeHandler = (e) => {
-    setAgeQuery(e.target.value);
-  };
+  // const [ageQuery, setAgeQuery] = useState('');
+  // const ageQueryChangeHandler = (e) => {
+  //   setAgeQuery(e.target.value);
+  // };
 
   // const submitHandler = (e) => {
   //   e.preventDefault();
@@ -154,40 +154,40 @@ export default function Layout({ title, description, children }) {
   //     label: 'Bride (Kanya)',
   //   },
   // ];
-  const age = [
-    {
-      name: '18 to 20',
-      value: '18-20',
-    },
-    {
-      name: '20 to 23',
-      value: '20-23',
-    },
-    {
-      name: '23 to 26',
-      value: '23-26',
-    },
-    {
-      name: '26 to 29',
-      value: '26-29',
-    },
-    {
-      name: '29 to 32',
-      value: '29-32',
-    },
-    {
-      name: '32 to 35',
-      value: '32-35',
-    },
-    {
-      name: '35 to 38',
-      value: '35-38',
-    },
-    {
-      name: '38 and above',
-      value: '38-80',
-    },
-  ];
+  // const age = [
+  //   {
+  //     name: '18 to 20',
+  //     value: '18-20',
+  //   },
+  //   {
+  //     name: '20 to 23',
+  //     value: '20-23',
+  //   },
+  //   {
+  //     name: '23 to 26',
+  //     value: '23-26',
+  //   },
+  //   {
+  //     name: '26 to 29',
+  //     value: '26-29',
+  //   },
+  //   {
+  //     name: '29 to 32',
+  //     value: '29-32',
+  //   },
+  //   {
+  //     name: '32 to 35',
+  //     value: '32-35',
+  //   },
+  //   {
+  //     name: '35 to 38',
+  //     value: '35-38',
+  //   },
+  //   {
+  //     name: '38 and above',
+  //     value: '38-80',
+  //   },
+  // ];
   console.log("in layout");
   return (
     <div>
@@ -216,8 +216,8 @@ export default function Layout({ title, description, children }) {
             </Box>
             <Drawer
               anchor="left"
-              // open={sidbarVisible}
-              // onClose={sidebarCloseHandler}
+                // open={sidbarVisible}
+                // onClose={sidebarCloseHandler}
             >
               <List>
                 <ListItem>
@@ -229,7 +229,7 @@ export default function Layout({ title, description, children }) {
                     <Typography>Shopping by category</Typography>
                     <IconButton
                       aria-label="close"
-                      onClick={sidebarCloseHandler}
+                      // onClick={sidebarCloseHandler}
                     >
                       <CancelIcon />
                     </IconButton>
@@ -245,7 +245,7 @@ export default function Layout({ title, description, children }) {
                     <ListItem
                       button
                       component="a"
-                      onClick={sidebarCloseHandler}
+                      // onClick={sidebarCloseHandler}
                     >
                       <ListItemText primary={category}></ListItemText>
                     </ListItem>
