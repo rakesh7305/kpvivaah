@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import NextLink from 'next/link';
 import Image from 'next/image';
 import {
@@ -19,10 +19,10 @@ import useStyles from '../../utils/styles';
 //import Product from '../../models/Product';
 import db from '../../utils/db';
 // import axios from 'axios';
-import { Store } from '../../utils/Store';
+//import { Store } from '../../utils/Store';
 // import { getError } from '../../utils/error';
-import { useRouter } from 'next/router';
-import { useSnackbar } from 'notistack';
+//import { useRouter } from 'next/router';
+//import { useSnackbar } from 'notistack';
 import Candidate from '../../models/Candidate';
 import moment from 'moment';
 

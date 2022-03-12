@@ -27,12 +27,12 @@ import {
   // InputLabel,
   // Select,
   // ListSubheader,
-  TextField,
+  // TextField,
   // Icon,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import CancelIcon from '@material-ui/icons/Cancel';
-import SearchIcon from '@material-ui/icons/Search';
+// import SearchIcon from '@material-ui/icons/Search';
 import useStyles from '../utils/styles';
 import { Store } from '../utils/Store';
 import { getError } from '../utils/error';
@@ -97,24 +97,24 @@ export default function Layout({ title, description, children }) {
   // const queryChangeHandler = (e) => {
   //   setQuery(e.target.value);
   // };
-  const [genderQuery, setGenderQuery] = useState('');
-  const genderQueryChangeHandler = (e) => {
-    setGenderQuery(e.target.value);
-  };
+  // const [genderQuery, setGenderQuery] = useState('');
+  // const genderQueryChangeHandler = (e) => {
+  //   setGenderQuery(e.target.value);
+  // };
 
   const [ageQuery, setAgeQuery] = useState('');
   const ageQueryChangeHandler = (e) => {
     setAgeQuery(e.target.value);
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log(genderQuery);
-    console.log(ageQuery);
-    //router.push(`/search?query=${query}`);
-    router.push(`/search?gender=${genderQuery}&age=${ageQuery}`);
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  //   console.log(genderQuery);
+  //   console.log(ageQuery);
+  //   //router.push(`/search?query=${query}`);
+  //   router.push(`/search?gender=${genderQuery}&age=${ageQuery}`);
 
-  };
+  // };
 
   useEffect(() => {
     fetchCategories();
@@ -144,16 +144,16 @@ export default function Layout({ title, description, children }) {
     Cookies.remove('paymentMethod');
     router.push('/');
   };
-  const genders = [
-    {
-      value: 'M',
-      label: 'Groom (Var)',
-    },
-    {
-      value: 'F',
-      label: 'Bride (Kanya)',
-    },
-  ];
+  // const genders = [
+  //   {
+  //     value: 'M',
+  //     label: 'Groom (Var)',
+  //   },
+  //   {
+  //     value: 'F',
+  //     label: 'Bride (Kanya)',
+  //   },
+  // ];
   const age = [
     {
       name: '18 to 20',
@@ -216,8 +216,8 @@ export default function Layout({ title, description, children }) {
             </Box>
             <Drawer
               anchor="left"
-              open={sidbarVisible}
-              onClose={sidebarCloseHandler}
+              // open={sidbarVisible}
+              // onClose={sidebarCloseHandler}
             >
               <List>
                 <ListItem>
