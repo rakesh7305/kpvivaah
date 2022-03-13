@@ -12,7 +12,7 @@ const signToken = (user) => {
     },
     process.env.JWT_SECRET,
     {
-      expiresIn: '30d',
+      expiresIn: '10s',
     }
   );
 };
@@ -40,5 +40,16 @@ const isAdmin = async (req, res, next) => {
     res.status(401).send({ message: 'User is not admin' });
   }
 };
+const isAuthUser = async (req, res) => {
+  const cookie = req.headers.cookie;
+  console.log(req.headers.cookie);
+  const userInfo = cookie.slice(cookie.search("userInfo=")+9).replace("%22"," ");
+  console.log("userInfo:" + userInfo);
+  if (userInfo.search("token") === -1 ) {
+    return {
+      auth: false,
+    }
+  }
+};
 
-export { signToken, isAuth, isAdmin };
+export { signToken, isAuth, isAdmin, isAuthUser };

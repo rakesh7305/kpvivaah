@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { useRouter } from 'next/router';
-// import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Layout from '../components/Layout';
 import db from '../utils/db';
 // import Product from '../models/Product';
@@ -18,12 +18,16 @@ import Candidate from '../models/Candidate';
 import useStyles from '../utils/styles';
 //import ProductItem from '../components/ProductItem';
 import CandidateItem from '../components/CandidateItem';
-// import { Store } from '../utils/Store';
+import { Store } from '../utils/Store';
 // import axios from 'axios';
 // import Rating from '@material-ui/lab/Rating';
 import { Pagination } from '@material-ui/lab';
 // import { useEffect } from 'react';
 import moment from 'moment';
+import { useSnackbar } from 'notistack';
+import { isAuth, isAuthUser } from '../utils/auth'
+
+
 
 
 const PAGE_SIZE = 3;
@@ -92,6 +96,34 @@ const ageGroup = [
 export default function Search(props) {
   const classes = useStyles();
   const router = useRouter();
+
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  const { state, dispatch } = useContext(Store);
+  const {
+    userInfo,
+  } = state;
+  // useEffect(() => {
+  //   if (!userInfo) {
+  //     router.push('/login?redirect=/search');
+  //     console.log("============");
+  //     console.log("Please login");
+  //     console.log("============");
+  //     enqueueSnackbar("Please Login", { variant: 'error' });
+  //     return <div>Please Login</div>;
+  //   }
+  // }, []);
+
+  // if (!userInfo) {
+  //   router.push('/login?redirect=/search');
+  //   enqueueSnackbar("Outside Please Login", { variant: 'error' });
+
+  //   console.log("============");
+  //   console.log("Outside Please login");
+  //   console.log("============");
+  // }
+
+
   const {
     //genderQuery = 'all',
     gender = 'all',
@@ -108,9 +140,9 @@ export default function Search(props) {
   const { candidates, countCandidates, page, pages, nriFlags, educationList, addressList, heightList } = props;
   console.log("In Search 1 = " + page);
 
-  console.log(router.query);
+  //console.log(router.query);
 
-  console.log(props);
+  //console.log(props);
 
   const filterSearch = ({
     page,
@@ -202,6 +234,7 @@ export default function Search(props) {
   // };
   return (
     <Layout title="Search">
+      {/* <div>{!userInfo? "Please Login":""}</div> */}
       <Grid className={classes.mt1} container spacing={1}>
         <Grid item xs={3}>
           <List>
@@ -362,10 +395,30 @@ export default function Search(props) {
     </Layout>
   );
 }
+//export async function getServerSideProps({ query }) {
+export async function getServerSideProps(context) {
+  const { query } = context;
 
-export async function getServerSideProps({ query }) {
+  try {
+    console.log("before isAuthUser")
+    const data = await isAuthUser(context.req, context.res);
+    console.log("after isAuthUser" + data)
+    if (data.auth === false) {
+      return {
+        redirect: {
+          destination: '/login?redirect=/search',
+          permanent: false,
+        },
+      }
+    }
+  } catch (e) {
+
+  }
+
   console.log("in get Server Side props")
   console.log(query);
+
+
 
   await db.connect();
   const pageSize = query.pageSize || PAGE_SIZE;
@@ -539,7 +592,7 @@ export async function getServerSideProps({ query }) {
     .limit(pageSize)
     .lean();
 
-  console.log(candidateDocs);
+  //console.log(candidateDocs);
 
   const nriFlags = await Candidate.find().distinct('NRI');
   const educationList = await Candidate.find().distinct('education');
@@ -547,9 +600,9 @@ export async function getServerSideProps({ query }) {
   const heightList = await Candidate.find().distinct('height');
 
 
-  console.log('Education List: ' + educationList);
-  console.log('Education List: ' + addressList);
-  console.log('Education List: ' + heightList);
+  // console.log('Education List: ' + educationList);
+  // console.log('Education List: ' + addressList);
+  // console.log('Education List: ' + heightList);
 
   //may not need to make this query again
   const countCandidates = await Candidate.countDocuments({

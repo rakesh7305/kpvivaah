@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import NextLink from 'next/link';
 import Image from 'next/image';
 import {
@@ -19,15 +19,37 @@ import useStyles from '../../utils/styles';
 //import Product from '../../models/Product';
 import db from '../../utils/db';
 // import axios from 'axios';
-//import { Store } from '../../utils/Store';
+import { Store } from '../../utils/Store';
 // import { getError } from '../../utils/error';
-//import { useRouter } from 'next/router';
-//import { useSnackbar } from 'notistack';
+import { useRouter } from 'next/router';
+import { useSnackbar } from 'notistack';
 import Candidate from '../../models/Candidate';
 import moment from 'moment';
+import { isAuth, isAuthUser } from '../../utils/auth'
+
 
 
 export default function CandidateScreen(props) {
+
+  const router = useRouter();
+
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  const { state, dispatch } = useContext(Store);
+  const {
+    userInfo,
+  } = state;
+  useEffect(() => {
+    if (!userInfo) {
+      router.push('/login?redirect=/search');
+      console.log("============");
+      console.log("Please login");
+      console.log("============");
+      enqueueSnackbar("Please Login", { variant: 'error' });
+      return;
+    }
+  }, []);
+
   // const router = useRouter();
   // const { state, dispatch } = useContext(Store);
   // const { userInfo } = state;
@@ -71,9 +93,9 @@ export default function CandidateScreen(props) {
   //     enqueueSnackbar(getError(err), { variant: 'error' });
   //   }
   // };
-  useEffect(() => {
-    //    fetchReviews();
-  }, []);
+  // useEffect(() => {
+  //   //    fetchReviews();
+  // }, []);
 
   if (!candidate) {
     return <div>Candidate Not Found</div>;
@@ -858,7 +880,23 @@ export default function CandidateScreen(props) {
 export async function getServerSideProps(context) {
   const { params } = context;
   const { _id } = params;
+  
+  try {
+    console.log("before isAuthUser")
+    const data = await isAuthUser(context.req, context.res);
+    console.log("after isAuthUser" + data)
+    if (data.auth === false) {
+      return {
+        redirect: {
+          destination: '/login?redirect=/search',
+          permanent: false,
+        },
+      }
+    }
+  } catch (e) {
 
+  }
+  
   await db.connect();
   const candidate1 = await Candidate.findOne({ _id }).lean();
   await db.disconnect();
