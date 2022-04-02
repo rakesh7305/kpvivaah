@@ -188,7 +188,7 @@ export default function Layout({ title, description, children }) {
   //     value: '38-80',
   //   },
   // ];
-  console.log("in layout");
+  // console.log("in layout");
   return (
     <div>
       <Head>

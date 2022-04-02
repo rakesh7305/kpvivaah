@@ -18,6 +18,9 @@ const initialState = {
   userInfo: Cookies.get('userInfo')
     ? JSON.parse(Cookies.get('userInfo'))
     : null,
+  scrambleStat: Cookies.get('scrambleStat')
+    ? JSON.parse(Cookies.get('scrambleStat'))
+    : [],
 };
 
 function reducer(state, action) {
@@ -31,10 +34,10 @@ function reducer(state, action) {
       const existItem = state.cart.cartItems.find(
         (item) => item._id === newItem._id
       );
-      const cartItems = existItem
-        ? state.cart.cartItems.map((item) =>
-            item.name === existItem.name ? newItem : item
-          )
+      const cartItems = existItem ? 
+      state.cart.cartItems.map((item) =>
+          item.name === existItem.name ? newItem : item
+        )
         : [...state.cart.cartItems, newItem];
       Cookies.set('cartItems', JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
@@ -87,6 +90,19 @@ function reducer(state, action) {
           paymentMethod: '',
         },
       };
+    case 'SCRAMBLE_ADD_STAT':
+      {
+        const newItem = action.payload;
+        // console.log(" before adding stat " + JSON.stringify(state.scrambleStat));
+
+        console.log("new Item " + JSON.stringify(newItem));
+        let oldStat = state.scrambleStat;
+        oldStat.push(newItem);
+        // console.log("after adding stat " + JSON.stringify(oldStat));
+
+        Cookies.set('scrambleStat', JSON.stringify(oldStat ));
+        return { ...state, scrambleStat: { ...oldStat }};
+      }
 
     default:
       return state;

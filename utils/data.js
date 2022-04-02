@@ -345,5 +345,35 @@ const data = {
 
     },
   ],
+  scrambleGame: [
+    {
+      gameNo: 1,
+      gameDate: new Date("2022-03-14"),
+      category: 'Science',
+      clue: 'PIDAY',
+      scrambledClue: 'DPYAI',
+    },
+    {
+      gameNo: 2,
+      gameDate: new Date("2022-03-15"),
+      category: 'Geography',
+      clue: 'EVEREST',
+      scrambledClue: 'REEVETS',
+    },
+    {
+      gameNo: 3,
+      gameDate: new Date("2022-03-16"),
+      category: 'MATH',
+      clue: 'PARABOLA',
+      scrambledClue: 'ALOBAPRA',
+    },
+    {
+      gameNo: 4,
+      gameDate: new Date("2022-03-17"),
+      category: 'LEADER',
+      clue: 'CHURCHILL',
+      scrambledClue: 'CRULILHCH',
+    },
+  ],
 };
 export default data;
