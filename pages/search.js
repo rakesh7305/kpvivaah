@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { useRouter } from 'next/router';
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import Layout from '../components/Layout';
 import db from '../utils/db';
 // import Product from '../models/Product';
@@ -25,7 +25,7 @@ import { Pagination } from '@material-ui/lab';
 // import { useEffect } from 'react';
 import moment from 'moment';
 import { useSnackbar } from 'notistack';
-import { isAuth, isAuthUser } from '../utils/auth'
+import { isAuthUser } from '../utils/auth'
 
 
 
@@ -97,12 +97,12 @@ export default function Search(props) {
   const classes = useStyles();
   const router = useRouter();
 
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  // const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const { state, dispatch } = useContext(Store);
-  const {
-    userInfo,
-  } = state;
+  const { state } = useContext(Store);
+  // const {
+  //   userInfo,
+  // } = state;
   // useEffect(() => {
   //   if (!userInfo) {
   //     router.push('/login?redirect=/search');
@@ -412,7 +412,7 @@ export async function getServerSideProps(context) {
       }
     }
   } catch (e) {
-
+    console.log(e);
   }
 
   console.log("in get Server Side props")

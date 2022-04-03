@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export const Interval =
   (delay = 0) =>

@@ -13,7 +13,7 @@ import React, { useContext, useEffect, useState } from 'react';
 
 export default function Timer({ stopTimer }) {
   const [totalTime, setTotalTime] = useState(0);
-  const [stopTimer, setStopTimer] = useState(false);
+  //const [stopTimer, setStopTimer] = useState(false);
 
  useEffect(() => {
 

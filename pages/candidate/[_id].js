@@ -25,7 +25,8 @@ import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
 import Candidate from '../../models/Candidate';
 import moment from 'moment';
-import { isAuth, isAuthUser } from '../../utils/auth'
+//import { isAuth, isAuthUser } from '../../utils/auth'
+import { isAuthUser } from '../../utils/auth'
 
 
 
@@ -33,9 +34,11 @@ export default function CandidateScreen(props) {
 
   const router = useRouter();
 
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  //const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
-  const { state, dispatch } = useContext(Store);
+  //const { state, dispatch } = useContext(Store);
+  const { state } = useContext(Store);
   const {
     userInfo,
   } = state;
@@ -894,7 +897,7 @@ export async function getServerSideProps(context) {
       }
     }
   } catch (e) {
-
+    console.log(e);
   }
   
   await db.connect();

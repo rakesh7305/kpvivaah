@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
-  List,
-  ListItem,
-  Typography,
-  TextField,
+  // List,
+  // ListItem,
+  // Typography,
+  // TextField,
   Button,
-  Link,
-  Grid,
-  Box,
+  // Link,
+  // Grid,
+  // Box,
   Dialog,
   DialogActions,
   DialogContent,
@@ -17,15 +17,15 @@ import {
 
 
 export default function SuccessDialog(props) {
-  const [open, setOpen] = React.useState(props.show);
+  // const [open, setOpen] = React.useState(props.show);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   // console.log(props);
 
@@ -45,7 +45,7 @@ export default function SuccessDialog(props) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            I'll keep track of your success
+            I will keep track of your success
           </DialogContentText>
         </DialogContent>
         <DialogActions>

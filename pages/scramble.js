@@ -1,26 +1,26 @@
 import {
-  List,
-  ListItem,
+  // List,
+  // ListItem,
   Typography,
   TextField,
-  Button,
-  Link,
+  // Button,
+  // Link,
   Grid,
   Box,
   IconButton,
 } from '@material-ui/core';
-import axios from 'axios';
+// import axios from 'axios';
 import { useRouter } from 'next/router';
-import NextLink from 'next/link';
+// import NextLink from 'next/link';
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
 import useStyles from '../utils/styles';
-import Cookies from 'js-cookie';
-import { Controller, useForm } from 'react-hook-form';
+// import Cookies from 'js-cookie';
+// import { useForm } from 'react-hook-form';
 import { useSnackbar } from 'notistack';
-import { getError } from '../utils/error';
-import ReactDOM from "react-dom";
+// import { getError } from '../utils/error';
+// import ReactDOM from "react-dom";
 import db from '../utils/db';
 import ScrambleGame from '../models/ScrambleGame';
 //import { useTimer } from "../components/useTimer";
@@ -34,16 +34,16 @@ import moment from 'moment';
 
 
 export default function Scramble(props) {
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm();
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  // const {
+  //   handleSubmit,
+  //   control,
+  //   formState: { errors },
+  // } = useForm();
+  const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
-  const { redirect } = router.query;
+  // const { redirect } = router.query;
   const { state, dispatch } = useContext(Store);
-  const { scrambleStat } = state;
+  // const { scrambleStat } = state;
   const [showModal, setShowModal] = useState(false);
   const [showStatModal, setShowStatisticModal] = useState(false);
   const [seconds, setSeconds] = useState(0);
@@ -73,17 +73,20 @@ export default function Scramble(props) {
 
   const word = Array.from(scrambleGame.clue);
 
-  const classes = useStyles();
+  // const classes = useStyles();
 
 
-  const INITIAL_ANS = Array.from({ length: word.length }, () => "");
+  // const INITIAL_ANS = Array.from({ length: word.length }, () => "");
   //const [ansewer, setAnswer] = useState();
-  const [rightAnswer, setrightAnswer] = useState(word.join(""));
+  // const [rightAnswer, setrightAnswer] = useState(word.join(""));
+  const rightAnswer = word.join("");
   //const [allValues, setAllValues] = useState(INITIAL_ANS);
   const allValues = useRef([]);
-  const clockRef = useRef();
+  // const clockRef = useRef();
 
-  const [newWord, setNewWord] = useState(Array.from(scrambleGame.scrambledClue));
+  // const [newWord, setNewWord] = useState(Array.from(scrambleGame.scrambledClue));
+  const newWord = Array.from(scrambleGame.scrambledClue);
+
   // console.log("All Values:" + allValues.current);
   // console.log("newWord:" + newWord);
 
@@ -92,7 +95,8 @@ export default function Scramble(props) {
     var item = { "id": 100 + i, "letter": newWord[i], "checked": false, "responseLetterId": -1 };
     shuffledWord_init.push(item);
   }
-  const [shuffledWord, setShuffledWord] = useState(shuffledWord_init);
+  // const [shuffledWord, setShuffledWord] = useState(shuffledWord_init);
+  const shuffledWord = shuffledWord_init;
 
   // console.log("JSON=" + JSON.stringify(shuffledWord));
 
@@ -145,6 +149,7 @@ export default function Scramble(props) {
   }
 
   function updateAllValues(val, index) {
+    val = ""; index = 0;
     const userAnswer = Array.from({ length: allValues.current.length }, () => "");
 
     allValues.current.map((item, index) => (
@@ -211,24 +216,24 @@ export default function Scramble(props) {
   };
 
 
-  function shuffle(array) {
-    var copy = [], n = array.length, i;
+  // function shuffle(array) {
+  //   var copy = [], n = array.length, i;
 
-    // While there remain elements to shuffle…
-    while (n) {
+  //   // While there remain elements to shuffle…
+  //   while (n) {
 
-      // Pick a remaining element…
-      i = Math.floor(Math.random() * array.length);
+  //     // Pick a remaining element…
+  //     i = Math.floor(Math.random() * array.length);
 
-      // If not already shuffled, move it to the new array.
-      if (i in array) {
-        copy.push(array[i]);
-        delete array[i];
-        n--;
-      }
-    }
-    return copy;
-  }
+  //     // If not already shuffled, move it to the new array.
+  //     if (i in array) {
+  //       copy.push(array[i]);
+  //       delete array[i];
+  //       n--;
+  //     }
+  //   }
+  //   return copy;
+  // }
 
   return (
     <Layout title="Scramble">
@@ -339,7 +344,7 @@ export default function Scramble(props) {
                     variant="outlined"
                     autoFocus
                     onChange={ansChangeHandler}
-                    onKeyUp={(data) => {
+                    onKeyUp={() => {
                       // console.log("on key up event: " + event.which);
                       if (event.which === 8) {
                         const currentId = event.target.id;
@@ -403,7 +408,7 @@ export default function Scramble(props) {
   );
 }
 export async function getServerSideProps(context) {
-  const { params } = context;
+  //const { params } = context;
   const gameDate = new Date("2022-03-14");
 
   await db.connect();

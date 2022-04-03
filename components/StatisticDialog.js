@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
-  List,
-  ListItem,
-  Typography,
-  TextField,
+  // List,
+  // ListItem,
+  // Typography,
+  // TextField,
   Button,
-  Link,
-  Grid,
-  Box,
+  // Link,
+  // Grid,
+  // Box,
   Dialog,
   DialogActions,
   DialogContent,
@@ -19,31 +19,31 @@ import Cookies from 'js-cookie';
 import {
   Chart,
   BarSeries,
-  Series,
+  // Series,
   Title,
   ArgumentAxis,
   ValueAxis,
-  ConstantLine,
-  Label,
-  Tick,
+  // ConstantLine,
+  // Label,
+  // Tick,
 } from '@devexpress/dx-react-chart-material-ui';
 import { Animation } from '@devexpress/dx-react-chart';
 import { scaleBand, scaleLinear } from '@devexpress/dx-chart-core';
-import { ArgumentScale, ValueScale, Stack } from '@devexpress/dx-react-chart';
+import { ArgumentScale, ValueScale } from '@devexpress/dx-react-chart';
 
 //import { scaleLinear, scaleTime } from 'd3-scale';
 
 
 export default function StatisticDialog(props) {
-  const [open, setOpen] = React.useState(props.show);
+  // const [open, setOpen] = Rea  ct.useState(props.show);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   // console.log(props);
 
