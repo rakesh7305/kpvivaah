@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React from 'react';
 import Layout from '../components/Layout';
 import db from '../utils/db';
 // import Product from '../models/Product';
@@ -18,7 +18,7 @@ import Candidate from '../models/Candidate';
 import useStyles from '../utils/styles';
 //import ProductItem from '../components/ProductItem';
 import CandidateItem from '../components/CandidateItem';
-import { Store } from '../utils/Store';
+// import { Store } from '../utils/Store';
 // import axios from 'axios';
 // import Rating from '@material-ui/lab/Rating';
 import { Pagination } from '@material-ui/lab';
