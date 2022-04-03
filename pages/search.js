@@ -24,7 +24,7 @@ import { Store } from '../utils/Store';
 import { Pagination } from '@material-ui/lab';
 // import { useEffect } from 'react';
 import moment from 'moment';
-import { useSnackbar } from 'notistack';
+// import { useSnackbar } from 'notistack';
 import { isAuthUser } from '../utils/auth'
 
 
@@ -99,7 +99,7 @@ export default function Search(props) {
 
   // const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const { state } = useContext(Store);
+  // const { state } = useContext(Store);
   // const {
   //   userInfo,
   // } = state;

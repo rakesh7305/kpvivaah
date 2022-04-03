@@ -1,14 +1,15 @@
 import {
-  Button,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
+  // Button,
+  // Card,
+  // CardActionArea,
+  // CardActions,
+  // CardContent,
+  // CardMedia,
+  Grid,
   Typography
 } from '@material-ui/core';
-import NextLink from 'next/link';
-import React, { useContext, useEffect, useState } from 'react';
+// import NextLink from 'next/link';
+import React, { useEffect, useState } from 'react';
 
 
 export default function Timer({ stopTimer }) {

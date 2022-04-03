@@ -15,7 +15,7 @@ import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
-import useStyles from '../utils/styles';
+// import useStyles from '../utils/styles';
 // import Cookies from 'js-cookie';
 // import { useForm } from 'react-hook-form';
 import { useSnackbar } from 'notistack';
@@ -40,9 +40,9 @@ export default function Scramble(props) {
   //   formState: { errors },
   // } = useForm();
   const { enqueueSnackbar } = useSnackbar();
-  const router = useRouter();
+  // const router = useRouter();
   // const { redirect } = router.query;
-  const { state, dispatch } = useContext(Store);
+  const { dispatch } = useContext(Store);
   // const { scrambleStat } = state;
   const [showModal, setShowModal] = useState(false);
   const [showStatModal, setShowStatisticModal] = useState(false);
@@ -123,7 +123,7 @@ export default function Scramble(props) {
       var id = (i).toString();
       document.getElementById(id).disabled = true;
     }
-  };
+  }
 
   function checkLetter(updatedAnswer) {
     // console.log("in checkletter " + updatedAnswer);
@@ -149,7 +149,8 @@ export default function Scramble(props) {
   }
 
   function updateAllValues(val, index) {
-    val = ""; index = 0;
+    val = index < 0 ? "" : "";
+
     const userAnswer = Array.from({ length: allValues.current.length }, () => "");
 
     allValues.current.map((item, index) => (
@@ -407,7 +408,7 @@ export default function Scramble(props) {
     </Layout>
   );
 }
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   //const { params } = context;
   const gameDate = new Date("2022-03-14");
 
